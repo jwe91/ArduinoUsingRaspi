@@ -198,5 +198,7 @@ Install Bridge and Servo libraries
 ```
 arduino --install-library "Bridge:1.0.0,Servo:1.2.0"
 ```
+### X11 error
+There is an error occuring when starting `sudo arduino --upload path/sketch.ino --port /dev/ttyACM0`. [Here](https://github.com/arduino/Arduino/issues/1981) more details on it.
 ## Use make for programming the Arduino from command line
 A tutorial can be found [here](http://www.raspberryvi.org/stories/arduino-cli.html)
