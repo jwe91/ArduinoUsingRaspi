@@ -143,25 +143,21 @@ Arduino keeps a list of preferences, as simple name and value pairs. Below, a fe
 - `4` Preference passed to `--get-pref` does not exist
 
 ### FILES
-The file `preferences.txt` stores the preferences used for the IDE, building and	uploading sketches.
+The file `preferences.txt` stores the preferences used for the IDE, building and uploading sketches.
 - `%LOCALAPPDATA%/Arduino15/preferences.txt` (Windows)
 - `~/Library/Arduino15/preferences.txt` (Max OS X)
 - `~/.arduino15/preferences.txt` (Linux)
 
-The directory `/Arduino` is referred to as the "Sketchbook" and contains the user's sketches. The path can be changed through the `sketchbook.path` preference.
+The directory `.../Arduino` is referred to as the "Sketchbook" and contains the user's sketches. The path can be changed through the `sketchbook.path` preference.
 - `My Documents/Arduino/` (Windows)
 - `~/Documents/Arduino/` (Mac OS X)
 - `~/Arduino/` (Linux)
 	
 Apart from sketches, three special directories can be inside the sketchbook:
 
-- *libraries*
-	Libraries can be put inside this directory, one library per subdirectory.
-- *hardware*
-	Support for third-party hardware can be added through this directory.
-- *tools*
-	External code-processing tools (that can be run through the Tools menu of the IDE) can be added here.
-
+- **libraries**: Libraries can be put inside this directory, one library per subdirectory.
+- **hardware** Support for third-party hardware can be added through this directory.
+- **tools** External code-processing tools (that can be run through the Tools menu of the IDE) can be added here.
 ### EXAMPLES
 
 Start the Arduino IDE, with two files open:
