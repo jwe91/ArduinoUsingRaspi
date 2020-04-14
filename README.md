@@ -100,62 +100,46 @@ Before you can flash your Arduino, you have to find out its serial port on the R
 	- __package__ is the identifier of the vendor (the first level folders inside the 'hardware' directory). Default arduino boards use 'arduino'.
 	- __architecture__ is the architecture of the board (second level folders inside the 'hardware' directory). Default arduino boards use either *arduino:avr* for all AVR-based boards (like Uno, Mega or Leonardo) or `arduino:sam` for 32bit SAM-based boards (like Arduino Due).
 	- __board__ is the actual board to use, as defined in 'boards.txt' contained in the architecture folder selected. For example, `arduino:avr:uno` for the Arduino Uno, `arduino:avr:diecimila` for the Arduino Duemilanove or  Diecimila, or `arduino:avr:mega` for the Arduino Mega.
-	- __parameters__ is a comma-separated list of boards specific parameters that are normally shown under submenus of the "Tools" menu. For example `arduino:avr:nano:cpu=atmega168` to Select the mega168 variant of the Arduino Nano board.
-	- __{empty}__ If this option is not passed, the value from the current preferences is used (e.g., the last board selected in the IDE).
+	- __parameters__ is a comma-separated list of boards specific parameters that are normally shown under submenus of the "Tools" menu. For example `arduino:avr:nano:cpu=atmega168` to Select the mega168 variant of the Arduino Nano board. If this option is not passed, the value from the current preferences is used (e.g., the last board selected in the IDE).
 
-- `--port portname`Select the serial port to perform upload of the sketch. On linux and MacOS X, this should be the path to a device file (e.g.,	`/dev/ttyACM0`). On Windows, this should be the name of the serial port (e.g., `COM3`).
-	- __{empty}__ If this option is not passed, the value from the current preferences is used (e.g., the last port selected in the IDE).
+- `--port portname`Select the serial port to perform upload of the sketch. On linux and MacOS X, this should be the path to a device file (e.g.,	`/dev/ttyACM0`). On Windows, this should be the name of the serial port (e.g., `COM3`). If this option is not passed, the value from the current preferences is used (e.g., the last port selected in the IDE).
 	
 - `--verbose-build` Enable verbose mode during build. If this option is not given, verbose mode during build is *disabled* regardless of the current preferences.
-- `--preserve-temp-files` Keep temporary files (preprocessed sketch, object files...) after termination.	If omitted, temporary files are deleted.
-	- __{empty}__ This option is only valid together with `--verify` or `--upload`.
+- `--preserve-temp-files` Keep temporary files (preprocessed sketch, object files...) after termination.	If omitted, temporary files are deleted. This option is only valid together with `--verify` or `--upload`.
 - `--useprogrammer` Upload using a programmer. Set if you're using an external programmer, or using the Arduino as ISP.
-- `--verbose-upload` Enable verbose mode during upload. If this option is not given, verbose mode during upload is *disabled* regardless of the current preferences.
-	- __{empty}__ This option is only valid together with `--verify` or `--upload`.
-- `-v`, `--verbose` Enable verbose mode during build and upload. This option has the same effect of using both `--verbose-build` and `--verbose-upload`.
-	- __{empty}__ This option is only valid together with `--verify` or `--upload`.
+- `--verbose-upload` Enable verbose mode during upload. If this option is not given, verbose mode during upload is *disabled* regardless of the current preferences. This option is only valid together with `--verify` or `--upload`.
+- `-v`, `--verbose` Enable verbose mode during build and upload. This option has the same effect of using both `--verbose-build` and `--verbose-upload`. This option is only valid together with `--verify` or `--upload`.
 - `--preferences-file filename` Read and store preferences from the specified `filename` instead	of the default one.
-- `--pref name=value` Sets the preference __name__ to the given __value__.
-	- __{empty}__ Note that the preferences you set with this option are not	validated: Invalid names will be set but never used, invalid values might lead to an error later on.
+- `--pref name=value` Sets the preference __name__ to the given __value__. Note that the preferences you set with this option are not	validated: Invalid names will be set but never used, invalid values might lead to an error later on.
 - `--save-prefs` Save any (changed) preferences to *preferences.txt*. In particular `--board`, `--port`, `--pref`, `--verbose`, `--verbose-build` and `--verbose-upload` may alter the current preferences.
 
-PREFERENCES
------------
-Arduino keeps a list of preferences, as simple name and value pairs.
-Below, a few of them are documented but a lot more are available.
+### PREFERENCES
+Arduino keeps a list of preferences, as simple name and value pairs. Below, a few of them are documented but a lot more are available.
 
-*sketchbook.path*::
-	The path where sketches are (usually) stored. This path can also
-	contain some special subdirectories (see FILES below).
-
-*update.check*::
+- `sketchbook.path` The path where sketches are (usually) stored. This path can also contain some special subdirectories (see FILES below).
+- `update.check`
 	When set to true, the IDE checks for a new version on startup.
-
-*editor.external*::
+- `editor.external`
 	When set to true, use an external editor (the IDE does not allow
 	editing and reloads each file before verifying).
-
-*build.path*::
+- `build.path`
 	The path to use for building. This is where things like the
 	preprocessed .cpp file, compiled .o files and the final .hex
-	file go.
-
-{empty}::
+	file go. 
+	
 	If set, this directory should already exist before running the
 	arduino command.
 
-{empty}::
 	If this preference is not set (which is normally the case), a
 	new temporary build folder is created on every run and deleted
 	again when the application is closed.
 
-EXIT STATUS
------------
-*0*:: Success
-*1*:: Build failed or upload failed
-*2*:: Sketch not found
-*3*:: Invalid (argument for) commandline option
-*4*:: Preference passed to *--get-pref* does not exist
+### EXIT STATUS
+- `0` Success
+- `1` Build failed or upload failed
+- `2` Sketch not found
+- `3` Invalid (argument for) commandline option
+- `4` Preference passed to `--get-pref` does not exist
 
 FILES
 -----
@@ -188,45 +172,44 @@ FILES
 		External code-processing tools (that can be run through
 		the Tools menu of the IDE) can be added here.
 
-EXAMPLES
---------
+### EXAMPLES
 
 Start the Arduino IDE, with two files open:
-
-     arduino /path/to/sketch/sketch.ino /path/to/sketch/extra.ino
-
+```
+arduino /path/to/sketch/sketch.ino /path/to/sketch/extra.ino
+```
 Compile and upload a sketch using the last selected board and serial port
-
-     arduino --upload /path/to/sketch/sketch.ino
-
+```
+arduino --upload /path/to/sketch/sketch.ino
+```
 Compile and upload a sketch to an Arduino Nano, with an Atmega168 CPU,
 connected on port '/dev/ttyACM0':
-
-     arduino --board arduino:avr:nano:cpu=atmega168 --port /dev/ttyACM0 --upload /path/to/sketch/sketch.ino
-
+```
+arduino --board arduino:avr:nano:cpu=atmega168 --port /dev/ttyACM0 --upload /path/to/sketch/sketch.ino
+```
 Compile a sketch, put the build results in the 'build' directory an
 re-use any previous build results in that directory.
-
-     arduino --pref build.path=/path/to/sketch/build --verify /path/to/sketch/sketch.ino
-
+```
+arduino --pref build.path=/path/to/sketch/build --verify /path/to/sketch/sketch.ino
+```
 Change the selected board and build path and do nothing else.
-
-     arduino --pref build.path=/path/to/sketch/build --board arduino:avr:uno --save-prefs
-
+```
+arduino --pref build.path=/path/to/sketch/build --board arduino:avr:uno --save-prefs
+```
 Install latest SAM board support
-
-     arduino --install-boards "arduino:sam"
-
+```
+arduino --install-boards "arduino:sam"
+```
 Install AVR board support, 1.6.2
-
-     arduino --install-boards "arduino:avr:1.6.2"
-
+```
+arduino --install-boards "arduino:avr:1.6.2"
+```
 Install Bridge library version 1.0.0
-
-     arduino --install-library "Bridge:1.0.0"
-
+```
+arduino --install-library "Bridge:1.0.0"
+```
 Install Bridge and Servo libraries
-
-     arduino --install-library "Bridge:1.0.0,Servo:1.2.0"
-
+```
+arduino --install-library "Bridge:1.0.0,Servo:1.2.0"
+```
 
