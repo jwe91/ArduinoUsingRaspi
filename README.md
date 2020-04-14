@@ -88,4 +88,13 @@ sudo apt-get install gcc-avr avr-libc avrdude
 can be used to install the required packages. There is a detailed description of all the commands and options in the [Arduino Project](https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc) on GitHub. Here, only the necessary commands for compiling and uploading your _arduino sketch_ are provided. 
 
 Before you can flash your Arduino, you have to find out its serial port on the Raspberry Pi. `ls /dev/tty*` lists all serial ports of the Raspberry Pi. Usually, the Arduino takes the port `/dev/ttyACM0`, `/dev/ttyUSB0` or similar. If you are not shure, you can either try out the potential ports or compare the list with and without the Arduino connected.
+### Actions
+* `--verify` Build the sketch.
+* `--upload` Build and upload the sketch.
+* `--get-pref [preference]` Prints the value of the given preference to the standard output stream. When the value does not exist, nothing is printed and the exit status is set (see EXIT STATUS below). If no preference is given as parameter, it prints all preferences.
+* `--install-boards package name:platform architecture[:version]` Fetches available board support (platform) list and install the specified one, along with its related tools. If version is omitted, the latest is installed. If a platform with the same version is already installed, nothing is installed and program exits with exit code 1. If a platform with a different version is already installed, it’s replaced.
+* `--install-library library name[:version]` Fetches available libraries list and install the specified one. If version is omitted, the latest is installed. If a library with the same version is already installed, nothing is installed and program exits with exit code 1. If a library with a different version is already installed, it’s replaced. Multiple libraries can be specified, separated by a comma.
+* `--version` Print the version information and exit.
+### Options
+
 
