@@ -102,8 +102,10 @@ Before you can flash your Arduino, you have to find out its serial port on the R
 	 * __board__ is the actual board to use, as defined in 'boards.txt' contained in the architecture folder selected. For example, `arduino:avr:uno` for the Arduino Uno, `arduino:avr:diecimila` for the Arduino Duemilanove or  Diecimila, or *arduino:avr:mega* for the Arduino Mega.
 	 * __parameters__ is a comma-separated list of boards specific parameters that are normally shown under submenus of the "Tools" menu. For example `arduino:avr:nano:cpu=atmega168` to Select the mega168 variant of the Arduino Nano board.
 	*__{empty}__ If this option is not passed, the value from the current preferences is used (e.g., the last board selected in the IDE).
+
 *`--port portname`Select the serial port to perform upload of the sketch. On linux and MacOS X, this should be the path to a device file (e.g.,	`/dev/ttyACM0`). On Windows, this should be the name of the serial port (e.g., `COM3`).
 	* __{empty}__ If this option is not passed, the value from the current preferences is used (e.g., the last port selected in the IDE).
+	
 *`--verbose-build` Enable verbose mode during build. If this option is not given, verbose mode during build is *disabled* regardless of the current preferences.
 *`--preserve-temp-files` Keep temporary files (preprocessed sketch, object files...) after termination.	If omitted, temporary files are deleted.
 	*__{empty}__ This option is only valid together with `--verify` or `--upload`.
