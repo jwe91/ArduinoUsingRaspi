@@ -156,8 +156,8 @@ The directory `.../Arduino` is referred to as the "Sketchbook" and contains the 
 Apart from sketches, three special directories can be inside the sketchbook:
 
 - **libraries**: Libraries can be put inside this directory, one library per subdirectory.
-- **hardware** Support for third-party hardware can be added through this directory.
-- **tools** External code-processing tools (that can be run through the Tools menu of the IDE) can be added here.
+- **hardware**: Support for third-party hardware can be added through this directory.
+- **tools**: External code-processing tools (that can be run through the Tools menu of the IDE) can be added here.
 ### EXAMPLES
 
 Start the Arduino IDE, with two files open:
