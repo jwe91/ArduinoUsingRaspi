@@ -198,4 +198,5 @@ Install Bridge and Servo libraries
 ```
 arduino --install-library "Bridge:1.0.0,Servo:1.2.0"
 ```
-
+## Use make for programming the Arduino from commandline
+A tutorial can be found [here](http://www.raspberryvi.org/stories/arduino-cli.html)
