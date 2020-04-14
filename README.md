@@ -102,39 +102,38 @@ Before you can flash your Arduino, you have to find out its serial port on the R
 	- __board__ is the actual board to use, as defined in 'boards.txt' contained in the architecture folder selected. For example, `arduino:avr:uno` for the Arduino Uno, `arduino:avr:diecimila` for the Arduino Duemilanove or  Diecimila, or `arduino:avr:mega` for the Arduino Mega.
 	- __parameters__ is a comma-separated list of boards specific parameters that are normally shown under submenus of the "Tools" menu. For example `arduino:avr:nano:cpu=atmega168` to Select the mega168 variant of the Arduino Nano board. 
 	
-If this option is not passed, the value from the current preferences is used (e.g., the last board selected in the IDE).
+	If this option is not passed, the value from the current preferences is used (e.g., the last board selected in the IDE).
 
-- `--port portname`Select the serial port to perform upload of the sketch. On linux and MacOS X, this should be the path to a device file (e.g.,	`/dev/ttyACM0`). On Windows, this should be the name of the serial port (e.g., `COM3`). If this option is not passed, the value from the current preferences is used (e.g., the last port selected in the IDE).
+- `--port portname`Select the serial port to perform upload of the sketch. On linux and MacOS X, this should be the path to a device file (e.g.,	`/dev/ttyACM0`). On Windows, this should be the name of the serial port (e.g., `COM3`). 
+
+	If this option is not passed, the value from the current preferences is used (e.g., the last port selected in the IDE).
 	
 - `--verbose-build` Enable verbose mode during build. If this option is not given, verbose mode during build is *disabled* regardless of the current preferences.
-- `--preserve-temp-files` Keep temporary files (preprocessed sketch, object files...) after termination.	If omitted, temporary files are deleted. This option is only valid together with `--verify` or `--upload`.
+- `--preserve-temp-files` Keep temporary files (preprocessed sketch, object files...) after termination. If omitted, temporary files are deleted. 
+
+	This option is only valid together with `--verify` or `--upload`.
 - `--useprogrammer` Upload using a programmer. Set if you're using an external programmer, or using the Arduino as ISP.
 - `--verbose-upload` Enable verbose mode during upload. If this option is not given, verbose mode during upload is *disabled* regardless of the current preferences. This option is only valid together with `--verify` or `--upload`.
-- `-v`, `--verbose` Enable verbose mode during build and upload. This option has the same effect of using both `--verbose-build` and `--verbose-upload`. This option is only valid together with `--verify` or `--upload`.
+- `-v`, `--verbose` Enable verbose mode during build and upload. This option has the same effect of using both `--verbose-build` and `--verbose-upload`. 
+
+	This option is only valid together with `--verify` or `--upload`.
 - `--preferences-file filename` Read and store preferences from the specified `filename` instead	of the default one.
-- `--pref name=value` Sets the preference __name__ to the given __value__. Note that the preferences you set with this option are not	validated: Invalid names will be set but never used, invalid values might lead to an error later on.
+- `--pref name=value` Sets the preference __name__ to the given __value__. 
+
+	Note that the preferences you set with this option are not validated: Invalid names will be set but never used, invalid values might lead to an error later on.
 - `--save-prefs` Save any (changed) preferences to *preferences.txt*. In particular `--board`, `--port`, `--pref`, `--verbose`, `--verbose-build` and `--verbose-upload` may alter the current preferences.
 
 ### PREFERENCES
 Arduino keeps a list of preferences, as simple name and value pairs. Below, a few of them are documented but a lot more are available.
 
 - `sketchbook.path` The path where sketches are (usually) stored. This path can also contain some special subdirectories (see FILES below).
-- `update.check`
-	When set to true, the IDE checks for a new version on startup.
-- `editor.external`
-	When set to true, use an external editor (the IDE does not allow
-	editing and reloads each file before verifying).
-- `build.path`
-	The path to use for building. This is where things like the
-	preprocessed .cpp file, compiled .o files and the final .hex
-	file go. 
+- `update.check` When set to true, the IDE checks for a new version on startup.
+- `editor.external` When set to true, use an external editor (the IDE does not allow editing and reloads each file before verifying).
+- `build.path` The path to use for building. This is where things like the preprocessed .cpp file, compiled .o files and the final .hex	file go. 
 	
-	If set, this directory should already exist before running the
-	arduino command.
+	If set, this directory should already exist before running the arduino command.
 
-	If this preference is not set (which is normally the case), a
-	new temporary build folder is created on every run and deleted
-	again when the application is closed.
+	If this preference is not set (which is normally the case), a new temporary build folder is created on every run and deleted again when the application is closed.
 
 ### EXIT STATUS
 - `0` Success
@@ -143,36 +142,25 @@ Arduino keeps a list of preferences, as simple name and value pairs. Below, a fe
 - `3` Invalid (argument for) commandline option
 - `4` Preference passed to `--get-pref` does not exist
 
-FILES
------
-*%LOCALAPPDATA%/Arduino15/preferences.txt* (Windows)::
-*~/Library/Arduino15/preferences.txt* (Max OS X)::
-*~/.arduino15/preferences.txt* (Linux)::
-	This file stores the preferences used for the IDE, building and
-	uploading sketches.
+### FILES
+The file `preferences.txt` stores the preferences used for the IDE, building and	uploading sketches.
+- `%LOCALAPPDATA%/Arduino15/preferences.txt` (Windows)
+- `~/Library/Arduino15/preferences.txt` (Max OS X)
+- `~/.arduino15/preferences.txt` (Linux)
 
-*My Documents/Arduino/* (Windows)::
-*~/Documents/Arduino/* (Mac OS X)::
-*~/Arduino/* (Linux)::
-	This directory is referred to as the "Sketchbook" and contains
-	the user's sketches. The path can be changed through the
-	*sketchbook.path* preference.
+The directory `/Arduino` is referred to as the "Sketchbook" and contains the user's sketches. The path can be changed through the `sketchbook.path` preference.
+- `My Documents/Arduino/` (Windows)
+- `~/Documents/Arduino/` (Mac OS X)
+- `~/Arduino/` (Linux)
+	
+Apart from sketches, three special directories can be inside the sketchbook:
 
-{empty}::
-	Apart from sketches, three special directories can be inside the
-	sketchbook:
-
-	*libraries*:::
-		Libraries can be put inside this directory, one library
-		per subdirectory.
-
-	*hardware*:::
-		Support for third-party hardware can be added through
-		this directory.
-
-	*tools*:::
-		External code-processing tools (that can be run through
-		the Tools menu of the IDE) can be added here.
+- *libraries*
+	Libraries can be put inside this directory, one library per subdirectory.
+- *hardware*
+	Support for third-party hardware can be added through this directory.
+- *tools*
+	External code-processing tools (that can be run through the Tools menu of the IDE) can be added here.
 
 ### EXAMPLES
 
