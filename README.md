@@ -32,6 +32,8 @@ RealVNC works for Linux, Mac and Windows. It can be installed installed on the R
 ```
 sudo apt-get install realvnc-vnc-server
 ```
+**Important**: Make shure that in `sudo raspi-config` "_Interfacing Options_ -> _VNC_" is enabled! Otherwise your client won't be able to connect to your Raspberry Pi.
+
 To open a connection to your Raspberry Pi via VNC, you have to install the [RealVNC-Client](https://www.realvnc.com/de/connect/download/viewer/) on your computer or use another comatible VNC-Client. 
 
 Often the resolution choosen by the Raspberry Pi (matching the connected HDI-Display or a standard value, if no display connected) is not suitable for working purposes. Therefore, you may choose a resolution, that fits to your display in use.
