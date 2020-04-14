@@ -12,7 +12,7 @@ Once the _Arduino IDE_ is installed on your Raspberry Pi, you can open a remote 
 ```
 sudo raspi-config
 ```
-and select **Enable boot to desktop/scratch**.
+and select **Enable boot to desktop/scratch**. Also, in the _raspi-config_, it is recommended to go to _Advanced Options_ -> _Memory Split_ and set the value to **64 (MByte)**. 
 ### XRDP
 For _Windows_ users, the easiest way is to use **xrdp**. On newer Raspberian versions, the installed _RealVNC-Server_ has to be uninstalled first.
 ```
@@ -27,6 +27,8 @@ With
 sudo systemctl status xrdp
 ```
 you can check the status of the _xrdp-server_ and see, whether it is running properly.
+### RealVNC
+
 ## Program Arduino using command line
 First, the packages avr-gcc (package is usually called gcc-avr), avr-libc and avrdude need to be installed. On Debian-based systems (as raspian is) the command
 ```
