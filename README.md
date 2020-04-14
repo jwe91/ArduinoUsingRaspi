@@ -7,6 +7,12 @@ sudo apt-get install arduino
 ```
 ## Program Arduino using GUI
 Once the _Arduino IDE_ is installed on your Raspberry Pi, you can open a remote Desktop connection and then use the _Arduino IDE_ as with any other Computer. 
+
+**Note**: Before you can start a remote desktop connection to your Raspberry Pi, you have to enable (if not already enabled) boot to desktop. To do so, type
+```
+sudo raspi-config
+```
+and enable **_Enable boot to desktop/scratch_**.
 ### XRDP
 For _Windows_ users, the easiest way is to use **xrdp**. On newer Raspberian versions, the installed _RealVNC-Server_ has to be uninstalled first.
 ```
