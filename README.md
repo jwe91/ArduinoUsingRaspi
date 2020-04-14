@@ -85,4 +85,4 @@ First, the packages avr-gcc (package is usually called gcc-avr), avr-libc and av
 ```
 sudo apt-get install gcc-avr avr-libc avrdude
 ```
-can be used to install the required packages.
+can be used to install the required packages. There is a detailed description of all the commands and options in the [Arduino Project](https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc) on GitHub. Here, only the necessary commands for compiling and uploading your _arduino sketch_ are provided. 
