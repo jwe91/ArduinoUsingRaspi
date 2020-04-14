@@ -86,3 +86,5 @@ First, the packages avr-gcc (package is usually called gcc-avr), avr-libc and av
 sudo apt-get install gcc-avr avr-libc avrdude
 ```
 can be used to install the required packages. There is a detailed description of all the commands and options in the [Arduino Project](https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc) on GitHub. Here, only the necessary commands for compiling and uploading your _arduino sketch_ are provided. 
+
+Before you can flash your Arduino, you have to find out its serial port on the Raspberry Pi. `ls /dev/tty*` lists all serial ports of the Raspberry Pi. Usually, the Arduino takes the port `/dev/ttyACM0`, `/dev/ttyUSB0` or similar. 
