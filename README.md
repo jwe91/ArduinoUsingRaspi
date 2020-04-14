@@ -28,7 +28,10 @@ sudo systemctl status xrdp
 ```
 you can check the status of the _xrdp-server_ and see, whether it is running properly.
 ### RealVNC
-
+RealVNC works for Linux, Mac and Windows. It can be installed installed on the Raspberry Pi using apt:
+```
+sudo apt-get install realvnc-vnc-server
+```
 ## Program Arduino using command line
 First, the packages avr-gcc (package is usually called gcc-avr), avr-libc and avrdude need to be installed. On Debian-based systems (as raspian is) the command
 ```
