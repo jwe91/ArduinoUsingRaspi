@@ -12,7 +12,7 @@ Once the _Arduino IDE_ is installed on your Raspberry Pi, you can open a remote 
 ```
 sudo raspi-config
 ```
-and select **Enable boot to desktop/scratch**. Also, in the _raspi-config_, it is recommended to go to _Advanced Options_ -> _Memory Split_ and set the value to **64 (MByte)**. 
+and select **Enable boot to desktop/scratch**. Also, in the _raspi-config_, it is recommended to go to "_Advanced Options_ -> _Memory Split_" and set the value to **64 (MByte)**. 
 ### XRDP
 For _Windows_ users, the easiest way is to use **xrdp**. On newer Raspberian versions, the installed _RealVNC-Server_ has to be uninstalled first.
 ```
@@ -32,6 +32,39 @@ RealVNC works for Linux, Mac and Windows. It can be installed installed on the R
 ```
 sudo apt-get install realvnc-vnc-server
 ```
+To open a connection to your Raspberry Pi via VNC, you have to install the _RealVNC-Client_ on your computer or use another comatible VNC-Client. 
+
+Often the resolution choosen by the Raspberry Pi (matching the connected HDI-Display or a standard value, if no display connected) is not suitable for working purposes. Therefore, you may choose a resolution, that fits to your display in use.
+#### Set resolution through raspi-config
+Type
+```
+sudo raspi-config
+```
+and select a compatible resolution under „_Advanced Options / Resolution_“.
+#### Set a fix value for the resolution
+There are two modi (CEA and DVT) for monitors. You can display the supported resolutions for CEA and DVT with
+```
+/opt/vc/bin/tvservice -m CEA
+/opt/vc/bin/tvservice -m DVT
+```
+and the resolution of the current monitor with:
+```
+/opt/vc/bin/tvservice -s
+```
+For our use, the **DVT** mode is relevant. To set fix resolution open
+```
+sudo nano /boot/config.txt
+```
+and insert the lines
+```
+# enable HDMI without monitor connected (optional)
+hdmi_force_hotplug=1
+# Output audio through HDMI (optional)
+hdmi_drive=2
+# enable DMT-mode (required)
+hdmi_group=2
+```
+at the end of the file.
 ## Program Arduino using command line
 First, the packages avr-gcc (package is usually called gcc-avr), avr-libc and avrdude need to be installed. On Debian-based systems (as raspian is) the command
 ```
