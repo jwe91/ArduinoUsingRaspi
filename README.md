@@ -96,35 +96,7 @@ Before you can flash your Arduino, you have to find out its serial port on the R
 * `--install-library library name[:version]` Fetches available libraries list and install the specified one. If version is omitted, the latest is installed. If a library with the same version is already installed, nothing is installed and program exits with exit code 1. If a library with a different version is already installed, it’s replaced. Multiple libraries can be specified, separated by a comma.
 * `--version` Print the version information and exit.
 ### Options
-ACTIONS
-
-*--verify*::
-	Build the sketch.
-
-*--upload*::
-	Build and upload the sketch.
-
-*--get-pref* [__preference__]::
-	Prints the value of the given preference to the standard output
-	stream. When the value does not exist, nothing is printed and
-	the exit status is set (see EXIT STATUS below).
-	If no preference is given as parameter, it prints all preferences.
-
-*--install-boards* __package name__:__platform architecture__[:__version__]::
-	Fetches available board support (platform) list and install the specified one, along with its related tools. If __version__ is omitted, the latest is installed. If a platform with the same version is already installed, nothing is installed and program exits with exit code 1. If a platform with a different version is already installed, it's replaced.
-
-*--install-library* __library name__[:__version__]::
-	Fetches available libraries list and install the specified one. If __version__ is omitted, the latest is installed. If a library with the same version is already installed, nothing is installed and program exits with exit code 1. If a library with a different version is already installed, it's replaced.
-	Multiple libraries can be specified, separated by a comma.
-
-*--version*::
-	Print the version information and exit.
-
-OPTIONS
--------
-*--board* __package__:__arch__:__board__[:__parameters__]::
-	Select the board to compile for.
-
+* `--board package:arch:board[:parameters]` Select the board to compile for.
 	 * __package__ is the identifier of the vendor (the first
 	   level folders inside the 'hardware' directory). Default
 	   arduino boards use 'arduino'.
