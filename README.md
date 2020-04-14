@@ -64,7 +64,18 @@ hdmi_drive=2
 # enable DMT-mode (required)
 hdmi_group=2
 ```
-at the end of the file.
+and **one** of the settings
+```
+# Auflösung: 1024x768 / 60 Hz
+hdmi_mode=16
+# Auflösung: 1280x768 / 60 Hz
+hdmi_mode=23
+# Auflösung: 1366x768 / 60 Hz
+hdmi_mode=81
+# Auflösung: 1920x1080 / 60 Hz (1080p)
+hdmi_mode=82
+```
+at the end of the file. More on the settings can be found [here](https://elinux.org/RPiconfig#Video_mode_options).
 ## Program Arduino using command line
 First, the packages avr-gcc (package is usually called gcc-avr), avr-libc and avrdude need to be installed. On Debian-based systems (as raspian is) the command
 ```
