@@ -12,7 +12,7 @@ Once the _Arduino IDE_ is installed on your Raspberry Pi, you can open a remote 
 ```
 sudo raspi-config
 ```
-and enable **_Enable boot to desktop/scratch_**.
+and select **Enable boot to desktop/scratch**.
 ### XRDP
 For _Windows_ users, the easiest way is to use **xrdp**. On newer Raspberian versions, the installed _RealVNC-Server_ has to be uninstalled first.
 ```
