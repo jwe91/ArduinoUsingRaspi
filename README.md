@@ -77,7 +77,9 @@ hdmi_mode=81
 # resolution: 1920x1080 / 60 Hz (1080p)
 hdmi_mode=82
 ```
-at the end of the file. More on the settings can be found [here](https://elinux.org/RPiconfig#Video_mode_options).
+at the end of the file and save it. More on the settings can be found [here](https://elinux.org/RPiconfig#Video_mode_options).
+
+**Note**: You have to `sudo reboot` the Raspberry Pi to apply your saved the changes to the `/boot/config.txt` file.
 ## Program Arduino using command line
 First, the packages avr-gcc (package is usually called gcc-avr), avr-libc and avrdude need to be installed. On Debian-based systems (as raspian is) the command
 ```
