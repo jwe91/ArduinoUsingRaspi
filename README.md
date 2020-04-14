@@ -85,7 +85,7 @@ First, the packages avr-gcc (package is usually called gcc-avr), avr-libc and av
 ```
 sudo apt-get install gcc-avr avr-libc avrdude
 ```
-can be used to install the required packages. There is a detailed description of all the commands and options in the [Arduino Project](https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc) on GitHub. Here, only the necessary commands for compiling and uploading your _arduino sketch_ are provided. 
+can be used to install the required packages. There is a detailed description of all the commands and options in the [Arduino Project](https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc) on GitHub. Here, only the necessary commands for compiling and uploading your _arduino sketch_ are provided. The description is also taken from the [Arduino Project](https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc).
 
 Before you can flash your Arduino, you have to find out its serial port on the Raspberry Pi. `ls /dev/tty*` lists all serial ports of the Raspberry Pi. Usually, the Arduino takes the port `/dev/ttyACM0`, `/dev/ttyUSB0` or similar. If you are not shure, you can either try out the potential ports or compare the list with and without the Arduino connected.
 ### Actions
@@ -96,5 +96,227 @@ Before you can flash your Arduino, you have to find out its serial port on the R
 * `--install-library library name[:version]` Fetches available libraries list and install the specified one. If version is omitted, the latest is installed. If a library with the same version is already installed, nothing is installed and program exits with exit code 1. If a library with a different version is already installed, it’s replaced. Multiple libraries can be specified, separated by a comma.
 * `--version` Print the version information and exit.
 ### Options
+ACTIONS
+
+*--verify*::
+	Build the sketch.
+
+*--upload*::
+	Build and upload the sketch.
+
+*--get-pref* [__preference__]::
+	Prints the value of the given preference to the standard output
+	stream. When the value does not exist, nothing is printed and
+	the exit status is set (see EXIT STATUS below).
+	If no preference is given as parameter, it prints all preferences.
+
+*--install-boards* __package name__:__platform architecture__[:__version__]::
+	Fetches available board support (platform) list and install the specified one, along with its related tools. If __version__ is omitted, the latest is installed. If a platform with the same version is already installed, nothing is installed and program exits with exit code 1. If a platform with a different version is already installed, it's replaced.
+
+*--install-library* __library name__[:__version__]::
+	Fetches available libraries list and install the specified one. If __version__ is omitted, the latest is installed. If a library with the same version is already installed, nothing is installed and program exits with exit code 1. If a library with a different version is already installed, it's replaced.
+	Multiple libraries can be specified, separated by a comma.
+
+*--version*::
+	Print the version information and exit.
+
+OPTIONS
+-------
+*--board* __package__:__arch__:__board__[:__parameters__]::
+	Select the board to compile for.
+
+	 * __package__ is the identifier of the vendor (the first
+	   level folders inside the 'hardware' directory). Default
+	   arduino boards use 'arduino'.
+	 * __architecture__ is the architecture of the board (second level folders
+	   inside the 'hardware' directory). Default arduino boards use
+	   either *arduino:avr* for all AVR-based boards (like Uno, Mega
+	   or Leonardo) or *arduino:sam* for 32bit SAM-based boards
+	   (like Arduino Due).
+	 * __board__ is the actual board to use, as defined in 'boards.txt'
+	   contained in the architecture folder selected. For example,
+	   *arduino:avr:uno* for the Arduino Uno,
+	   *arduino:avr:diecimila* for the Arduino Duemilanove or
+	   Diecimila, or *arduino:avr:mega* for the Arduino Mega.
+	 * __parameters__ is a comma-separated list of boards specific parameters
+	   that are normally shown under submenus of the "Tools" menu. For
+	   example *arduino:avr:nano:cpu=atmega168* to Select the mega168
+	   variant of the Arduino Nano board.
+
+{empty}::
+	If this option is not passed, the value from the current
+	preferences is used (e.g., the last board selected in the IDE).
+
+*--port* __portname__::
+	Select the serial port to perform upload of the sketch.
+	On linux and MacOS X, this should be the path to a device file (e.g.,
+	*/dev/ttyACM0*). On Windows, this should be the name of the serial
+	port (e.g., *COM3*).
+
+{empty}::
+	If this option is not passed, the value from the current
+	preferences is used (e.g., the last port selected in the IDE).
+
+*--verbose-build*::
+	Enable verbose mode during build. If this option is not given,
+	verbose mode during build is *disabled* regardless of the current
+	preferences.
+
+*--preserve-temp-files*::
+	Keep temporary files (preprocessed sketch, object files...) after termination.
+	If omitted, temporary files are deleted.
+
+{empty}::
+	This option is only valid together with *--verify* or
+	*--upload*.
+
+*--useprogrammer*::
+	Upload using a programmer. Set if you're using an external programmer, or
+	using the Arduino as ISP.
+
+*--verbose-upload*::
+	Enable verbose mode during upload. If this option is not given,
+	verbose mode during upload is *disabled* regardless of the current
+	preferences.
+
+{empty}::
+	This option is only valid together with *--verify* or
+	*--upload*.
+
+*-v, --verbose*::
+	Enable verbose mode during build and upload.
+	This option has the same effect of using both *--verbose-build*
+	and *--verbose-upload*.
+
+{empty}::
+	This option is only valid together with *--verify* or
+	*--upload*.
+
+*--preferences-file* __filename__::
+	Read and store preferences from the specified __filename__ instead
+	of the default one.
+
+*--pref* __name__=__value__::
+	Sets the preference __name__ to the given __value__.
+
+{empty}::
+	Note that the preferences you set with this option are not
+	validated: Invalid names will be set but never used, invalid
+	values might lead to an error later on.
+
+*--save-prefs*::
+	Save any (changed) preferences to *preferences.txt*. In particular
+	*--board*, *--port*, *--pref*, *--verbose*, *--verbose-build* and
+	*--verbose-upload* may alter the current preferences.
+
+PREFERENCES
+-----------
+Arduino keeps a list of preferences, as simple name and value pairs.
+Below, a few of them are documented but a lot more are available.
+
+*sketchbook.path*::
+	The path where sketches are (usually) stored. This path can also
+	contain some special subdirectories (see FILES below).
+
+*update.check*::
+	When set to true, the IDE checks for a new version on startup.
+
+*editor.external*::
+	When set to true, use an external editor (the IDE does not allow
+	editing and reloads each file before verifying).
+
+*build.path*::
+	The path to use for building. This is where things like the
+	preprocessed .cpp file, compiled .o files and the final .hex
+	file go.
+
+{empty}::
+	If set, this directory should already exist before running the
+	arduino command.
+
+{empty}::
+	If this preference is not set (which is normally the case), a
+	new temporary build folder is created on every run and deleted
+	again when the application is closed.
+
+EXIT STATUS
+-----------
+*0*:: Success
+*1*:: Build failed or upload failed
+*2*:: Sketch not found
+*3*:: Invalid (argument for) commandline option
+*4*:: Preference passed to *--get-pref* does not exist
+
+FILES
+-----
+*%LOCALAPPDATA%/Arduino15/preferences.txt* (Windows)::
+*~/Library/Arduino15/preferences.txt* (Max OS X)::
+*~/.arduino15/preferences.txt* (Linux)::
+	This file stores the preferences used for the IDE, building and
+	uploading sketches.
+
+*My Documents/Arduino/* (Windows)::
+*~/Documents/Arduino/* (Mac OS X)::
+*~/Arduino/* (Linux)::
+	This directory is referred to as the "Sketchbook" and contains
+	the user's sketches. The path can be changed through the
+	*sketchbook.path* preference.
+
+{empty}::
+	Apart from sketches, three special directories can be inside the
+	sketchbook:
+
+	*libraries*:::
+		Libraries can be put inside this directory, one library
+		per subdirectory.
+
+	*hardware*:::
+		Support for third-party hardware can be added through
+		this directory.
+
+	*tools*:::
+		External code-processing tools (that can be run through
+		the Tools menu of the IDE) can be added here.
+
+EXAMPLES
+--------
+
+Start the Arduino IDE, with two files open:
+
+     arduino /path/to/sketch/sketch.ino /path/to/sketch/extra.ino
+
+Compile and upload a sketch using the last selected board and serial port
+
+     arduino --upload /path/to/sketch/sketch.ino
+
+Compile and upload a sketch to an Arduino Nano, with an Atmega168 CPU,
+connected on port '/dev/ttyACM0':
+
+     arduino --board arduino:avr:nano:cpu=atmega168 --port /dev/ttyACM0 --upload /path/to/sketch/sketch.ino
+
+Compile a sketch, put the build results in the 'build' directory an
+re-use any previous build results in that directory.
+
+     arduino --pref build.path=/path/to/sketch/build --verify /path/to/sketch/sketch.ino
+
+Change the selected board and build path and do nothing else.
+
+     arduino --pref build.path=/path/to/sketch/build --board arduino:avr:uno --save-prefs
+
+Install latest SAM board support
+
+     arduino --install-boards "arduino:sam"
+
+Install AVR board support, 1.6.2
+
+     arduino --install-boards "arduino:avr:1.6.2"
+
+Install Bridge library version 1.0.0
+
+     arduino --install-library "Bridge:1.0.0"
+
+Install Bridge and Servo libraries
+
+     arduino --install-library "Bridge:1.0.0,Servo:1.2.0"
 
 
