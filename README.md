@@ -66,13 +66,13 @@ hdmi_group=2
 ```
 and **one** of the settings
 ```
-# Auflösung: 1024x768 / 60 Hz
+# resolution: 1024x768 / 60 Hz
 hdmi_mode=16
-# Auflösung: 1280x768 / 60 Hz
+# resolution: 1280x768 / 60 Hz
 hdmi_mode=23
-# Auflösung: 1366x768 / 60 Hz
+# resolution: 1366x768 / 60 Hz
 hdmi_mode=81
-# Auflösung: 1920x1080 / 60 Hz (1080p)
+# resolution: 1920x1080 / 60 Hz (1080p)
 hdmi_mode=82
 ```
 at the end of the file. More on the settings can be found [here](https://elinux.org/RPiconfig#Video_mode_options).
