@@ -103,72 +103,52 @@ Before you can flash your Arduino, you have to find out its serial port on the R
 	 * __architecture__ is the architecture of the board (second level folders
 	   inside the 'hardware' directory). Default arduino boards use
 	   either *arduino:avr* for all AVR-based boards (like Uno, Mega
-	   or Leonardo) or *arduino:sam* for 32bit SAM-based boards
+	   or Leonardo) or `arduino:sam` for 32bit SAM-based boards
 	   (like Arduino Due).
 	 * __board__ is the actual board to use, as defined in 'boards.txt'
 	   contained in the architecture folder selected. For example,
-	   *arduino:avr:uno* for the Arduino Uno,
-	   *arduino:avr:diecimila* for the Arduino Duemilanove or
+	   `arduino:avr:uno` for the Arduino Uno,
+	   `arduino:avr:diecimila` for the Arduino Duemilanove or
 	   Diecimila, or *arduino:avr:mega* for the Arduino Mega.
 	 * __parameters__ is a comma-separated list of boards specific parameters
 	   that are normally shown under submenus of the "Tools" menu. For
-	   example *arduino:avr:nano:cpu=atmega168* to Select the mega168
+	   example `arduino:avr:nano:cpu=atmega168` to Select the mega168
 	   variant of the Arduino Nano board.
-
-{empty}::
-	If this option is not passed, the value from the current
+	*__{empty}__ If this option is not passed, the value from the current
 	preferences is used (e.g., the last board selected in the IDE).
 
-*--port* __portname__::
-	Select the serial port to perform upload of the sketch.
+*`--port portname`Select the serial port to perform upload of the sketch.
 	On linux and MacOS X, this should be the path to a device file (e.g.,
 	*/dev/ttyACM0*). On Windows, this should be the name of the serial
 	port (e.g., *COM3*).
+	* __{empty}__ If this option is not passed, the value from the current preferences is used (e.g., the last port selected in the IDE).
 
-{empty}::
-	If this option is not passed, the value from the current
-	preferences is used (e.g., the last port selected in the IDE).
-
-*--verbose-build*::
-	Enable verbose mode during build. If this option is not given,
+*`--verbose-build` Enable verbose mode during build. If this option is not given,
 	verbose mode during build is *disabled* regardless of the current
 	preferences.
 
-*--preserve-temp-files*::
-	Keep temporary files (preprocessed sketch, object files...) after termination.
+*`--preserve-temp-files` Keep temporary files (preprocessed sketch, object files...) after termination.
 	If omitted, temporary files are deleted.
+	*__{empty}__ This option is only valid together with `--verify` or `--upload`.
 
-{empty}::
-	This option is only valid together with *--verify* or
-	*--upload*.
-
-*--useprogrammer*::
-	Upload using a programmer. Set if you're using an external programmer, or
+*`--useprogrammer` Upload using a programmer. Set if you're using an external programmer, or
 	using the Arduino as ISP.
 
-*--verbose-upload*::
-	Enable verbose mode during upload. If this option is not given,
+*`--verbose-upload` Enable verbose mode during upload. If this option is not given,
 	verbose mode during upload is *disabled* regardless of the current
 	preferences.
+	*__{empty}__ This option is only valid together with `--verify` or `--upload`.
 
-{empty}::
-	This option is only valid together with *--verify* or
-	*--upload*.
+`-v`, `--verbose` Enable verbose mode during build and upload.
+	This option has the same effect of using both `--verbose-build`
+	and `--verbose-upload`.
+	*__{empty}__ This option is only valid together with `--verify` or
+	`--upload`.
 
-*-v, --verbose*::
-	Enable verbose mode during build and upload.
-	This option has the same effect of using both *--verbose-build*
-	and *--verbose-upload*.
-
-{empty}::
-	This option is only valid together with *--verify* or
-	*--upload*.
-
-*--preferences-file* __filename__::
-	Read and store preferences from the specified __filename__ instead
+*`--preferences-file filename` Read and store preferences from the specified `filename` instead
 	of the default one.
 
-*--pref* __name__=__value__::
+*`--pref name=value`
 	Sets the preference __name__ to the given __value__.
 
 {empty}::
